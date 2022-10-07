@@ -21,3 +21,13 @@ func (c *Client) Connect() error {
 
 	return nil
 }
+
+func (c *Client) Publish(topic string, payload []byte) error {
+	return c.Connection.Publish(topic, payload)
+}
+
+func (c *Client) Subscribe(topic string, channel chan []byte) {
+	c.Connection.Subscribe(topic, func(bytes []byte) {
+		channel <- bytes
+	})
+}
