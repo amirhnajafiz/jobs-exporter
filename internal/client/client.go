@@ -17,7 +17,7 @@ type Client struct {
 // Connect
 // to stallion server.
 func (c *Client) Connect() error {
-	conn, err := stallion.NewClient(c.Cfg.Addr)
+	conn, err := stallion.NewClient(c.Cfg.Address)
 	if err != nil {
 		return fmt.Errorf("stallion connection failed %w", err)
 	}
