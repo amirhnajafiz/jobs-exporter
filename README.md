@@ -1,10 +1,12 @@
 <h1 align="center">
-Stallion Black Box Exporter
+Stallion Vet
 </h1>
 
-Monitoring Stallion message broker with a Black Box. 
+<br />
+
+Monitoring **Stallion** message broker server with a Blackbox. 
 Check service health with metrics like response time, 
-success publish and failure requests.
+success publish, failure requests, and failure connections.
 
 ## Start
 
