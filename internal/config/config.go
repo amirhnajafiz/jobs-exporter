@@ -8,11 +8,13 @@ import (
 	"github.com/knadh/koanf/providers/file"
 	"github.com/knadh/koanf/providers/structs"
 	"github.com/official-stallion/stallion-black-box-exporter/internal/client"
+	"github.com/official-stallion/stallion-black-box-exporter/internal/telemetry"
 )
 
 // Config stores data for black box configs
 type Config struct {
-	Client client.Config `koanf:"client"`
+	Client    client.Config    `koanf:"client"`
+	Telemetry telemetry.Config `koanf:"telemetry"`
 }
 
 // Load configs.
