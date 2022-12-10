@@ -1,4 +1,4 @@
-module github.com/official-stallion/stallion-black-box-exporter
+module github.com/official-stallion/vet
 
 go 1.19
 

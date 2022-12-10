@@ -1,6 +1,6 @@
 package main
 
-import "github.com/official-stallion/stallion-black-box-exporter/internal/cmd"
+import "github.com/official-stallion/vet/internal/cmd"
 
 func main() {
 	cmd.Execute()

@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/official-stallion/stallion-black-box-exporter/internal/client"
-	"github.com/official-stallion/stallion-black-box-exporter/internal/config"
-	"github.com/official-stallion/stallion-black-box-exporter/internal/telemetry/metrics"
+	"github.com/official-stallion/vet/internal/client"
+	"github.com/official-stallion/vet/internal/config"
+	"github.com/official-stallion/vet/internal/telemetry/metrics"
 )
 
 const (

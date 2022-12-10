@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/official-stallion/stallion-black-box-exporter/internal/telemetry"
+	"github.com/official-stallion/vet/internal/telemetry"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 

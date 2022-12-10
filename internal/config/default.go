@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/official-stallion/stallion-black-box-exporter/internal/client"
-	"github.com/official-stallion/stallion-black-box-exporter/internal/telemetry"
+	"github.com/official-stallion/vet/internal/client"
+	"github.com/official-stallion/vet/internal/telemetry"
 )
 
 // Default configs.

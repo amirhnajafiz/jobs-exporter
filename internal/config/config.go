@@ -7,8 +7,8 @@ import (
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
 	"github.com/knadh/koanf/providers/structs"
-	"github.com/official-stallion/stallion-black-box-exporter/internal/client"
-	"github.com/official-stallion/stallion-black-box-exporter/internal/telemetry"
+	"github.com/official-stallion/vet/internal/client"
+	"github.com/official-stallion/vet/internal/telemetry"
 )
 
 // Config stores data for black box configs
