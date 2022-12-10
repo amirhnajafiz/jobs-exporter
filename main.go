@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/official-stallion/stallion-black-box-exporter/internal/cmd"
 
 func main() {
-	fmt.Println("vim-go")
+	cmd.Execute()
 }

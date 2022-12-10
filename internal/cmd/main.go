@@ -13,6 +13,7 @@ const (
 	topic = "stallion-black-box"
 )
 
+// Payload type stores data that we send over stallion.
 type Payload struct {
 	Ok      bool      `json:"ok"`
 	Created time.Time `json:"created"`
@@ -97,5 +98,24 @@ func Execute() {
 				time.Sleep(2 * time.Second)
 			}
 		}()
+	}
+
+	// handling read payloads
+	for {
+		select {
+		case bytes := <-channel:
+			// creating a payload
+			var payload Payload
+			// unmarshalling payload
+			if err := json.Unmarshal(bytes, &payload); err != nil {
+				blackBoxMetrics.ConsumeErrors.Add(1)
+			}
+			// check payload validation
+			if payload.Ok {
+				diff := time.Now().Sub(payload.Created)
+
+				blackBoxMetrics.ResponseTime.Observe(diff.Seconds())
+			}
+		}
 	}
 }
