@@ -8,8 +8,12 @@ import (
 func Default() Config {
 	return Config{
 		Client: client.Config{
-			Address:  "",
-			Consumer: false,
+			Address: "",
+			Auth: client.Auth{
+				Username: "root",
+				Password: "",
+			},
+			Port: 8080,
 		},
 	}
 }
