@@ -11,7 +11,7 @@ import (
 // for blackbox status reporting.
 type Client struct {
 	Cfg        Config
-	Connection stallion.Client
+	connection stallion.Client
 }
 
 // Connect
@@ -22,7 +22,7 @@ func (c *Client) Connect() error {
 		return fmt.Errorf("stallion connection failed %w", err)
 	}
 
-	c.Connection = conn
+	c.connection = conn
 
 	return nil
 }
@@ -30,13 +30,13 @@ func (c *Client) Connect() error {
 // Publish
 // send message over stallion.
 func (c *Client) Publish(topic string, payload []byte) error {
-	return c.Connection.Publish(topic, payload)
+	return c.connection.Publish(topic, payload)
 }
 
 // Subscribe
 // subscribe over stallion.
 func (c *Client) Subscribe(topic string, channel chan []byte) {
-	c.Connection.Subscribe(topic, func(bytes []byte) {
+	c.connection.Subscribe(topic, func(bytes []byte) {
 		channel <- bytes
 	})
 }
