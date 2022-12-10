@@ -1,0 +1,9 @@
+client:
+  address: "127.0.0.1"
+  port: 9090
+  auth:
+    username: "root"
+    password: "Password"
+telemetry:
+  address: ":3030"
+  enabled: true
