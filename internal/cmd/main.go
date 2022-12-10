@@ -27,7 +27,7 @@ func Execute() {
 	channel := make(chan []byte)
 
 	// enabling metrics server
-	metrics.NewServer(cfg.Telemetry)
+	metrics.NewServer(cfg.Telemetry).Start()
 
 	// getting the metrics.
 	blackBoxMetrics := metrics.NewMetrics()
