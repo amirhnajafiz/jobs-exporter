@@ -1,6 +1,11 @@
 package handler
 
-import "k8s.io/client-go/kubernetes"
+import (
+	"context"
+	"log"
+
+	"k8s.io/client-go/kubernetes"
+)
 
 type Handler struct {
 	Namespace string
@@ -8,5 +13,13 @@ type Handler struct {
 }
 
 func (h Handler) Monitor() {
+	ctx := context.Background()
 	jobsInterface := h.K8SClient.BatchV1().Jobs(h.Namespace)
+
+	for {
+		jobs, err := jobsInterface.List(ctx, nil)
+		if err != nil {
+			log.Println(err)
+		}
+	}
 }
