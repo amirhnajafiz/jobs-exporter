@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 )
 
@@ -14,12 +15,15 @@ type Handler struct {
 
 func (h Handler) Monitor() {
 	ctx := context.Background()
-	jobsInterface := h.K8SClient.BatchV1().Jobs(h.Namespace)
 
 	for {
-		jobs, err := jobsInterface.List(ctx, nil)
+		jobs, err := h.K8SClient.BatchV1().Jobs(h.Namespace).List(ctx, v1.ListOptions{})
 		if err != nil {
 			log.Println(err)
+		}
+
+		for _, job := range jobs.Items {
+			log.Println(job.Name)
 		}
 	}
 }
