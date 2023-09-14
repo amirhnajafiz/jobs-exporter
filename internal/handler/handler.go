@@ -23,7 +23,12 @@ func (h Handler) Monitor() {
 		}
 
 		for _, job := range jobs.Items {
-			log.Println(job.Name)
+			p := &Pack{
+				Name:      job.GetName(),
+				Namespace: job.GetNamespace(),
+				Created:   job.GetCreationTimestamp().Time,
+				Status:    job.Status.String(),
+			}
 		}
 	}
 }
