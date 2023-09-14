@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/segmentio/kafka-go"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -12,6 +13,7 @@ import (
 )
 
 type Handler struct {
+	Interval  int
 	Namespace string
 	KafkaConn *kafka.Conn
 	K8SClient *kubernetes.Clientset
@@ -55,5 +57,7 @@ func (h Handler) Monitor() {
 		if _, err = h.KafkaConn.WriteMessages(messages...); err != nil {
 			log.Println(fmt.Errorf("%s\n\t%w", ErrKafkaPublish, err))
 		}
+
+		time.Sleep(time.Duration(h.Interval) * time.Second)
 	}
 }
