@@ -14,7 +14,8 @@ func Default() Config {
 			Host:      "",
 		},
 		K8S: k8s.Config{
-			Path: "",
+			Path:      "",
+			Namespace: "",
 		},
 	}
 }
