@@ -16,7 +16,7 @@ import (
 
 const (
 	// Prefix indicates environment variables prefix.
-	Prefix = "JM_"
+	Prefix = "jm_"
 )
 
 type Config struct {
