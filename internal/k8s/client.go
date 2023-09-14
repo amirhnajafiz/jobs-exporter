@@ -5,8 +5,8 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
-func GetClient(path string) (*kubernetes.Clientset, error) {
-	config, err := clientcmd.BuildConfigFromFlags("", path)
+func GetClient(cfg Config) (*kubernetes.Clientset, error) {
+	config, err := clientcmd.BuildConfigFromFlags("", cfg.Path)
 	if err != nil {
 		return nil, err
 	}
