@@ -3,6 +3,7 @@ package handler
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"github.com/segmentio/kafka-go"
@@ -23,7 +24,7 @@ func (h Handler) Monitor() {
 		// get list of namespace jobs
 		jobs, err := h.K8SClient.BatchV1().Jobs(h.Namespace).List(ctx, v1.ListOptions{})
 		if err != nil {
-			log.Println(err)
+			log.Println(fmt.Errorf("%s\n\t%w", ErrJobPulling, err))
 		}
 
 		// create messages array
@@ -40,7 +41,9 @@ func (h Handler) Monitor() {
 
 			bytes, er := json.Marshal(&p)
 			if er != nil {
-				log.Println(er)
+				log.Println(fmt.Errorf("%s\n\t%w", ErrPackBuild, er))
+
+				continue
 			}
 
 			messages = append(messages, kafka.Message{
@@ -50,7 +53,7 @@ func (h Handler) Monitor() {
 
 		// publish over kafka
 		if _, err = h.KafkaConn.WriteMessages(messages...); err != nil {
-			log.Println(err)
+			log.Println(fmt.Errorf("%s\n\t%w", ErrKafkaPublish, err))
 		}
 	}
 }
